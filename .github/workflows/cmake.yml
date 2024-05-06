@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        GP2040_BOARDCONFIG: [FlatboxRev5, FlatboxRev5RGB]
+        GP2040_BOARDCONFIG: [UAZeroMX, UACoffinMX]
 
     steps:
     #Global Setup

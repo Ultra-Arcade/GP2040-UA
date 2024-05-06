@@ -9,11 +9,11 @@
 //       SHOULD ONLY CONSIST OF PREPROCESSOR DIRECTIVES
 // -----------------------------------------------------
 
-#ifndef _BOARDS_FLATBOXREV5_H
-#define _BOARDS_FLATBOXREV5_H
+#ifndef _BOARDS_UACOFFINMX_H
+#define _BOARDS_UACOFFINMX_H
 
 // For board detection
-#define FLATBOXREV5
+#define UACOFFINMX
 
 // For crappy crystal
 #ifndef PICO_XOSC_STARTUP_DELAY_MULTIPLIER
