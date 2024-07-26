@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        GP2040_BOARDCONFIG: [UAZeroMX, UACoffinMX]
+        GP2040_BOARDCONFIG: [UAZeroMX, UACoffinMX, UA16BTN]
 
     steps:
     #Global Setup
