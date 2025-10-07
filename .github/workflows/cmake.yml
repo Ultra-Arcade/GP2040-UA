@@ -24,7 +24,7 @@ jobs:
     strategy:
       matrix:
         GP2040_BOARDCONFIG: 
-          [DR_Fliperama]
+          [17XL]
 
     steps:
     - name: Setup cmake
