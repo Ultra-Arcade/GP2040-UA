@@ -29,10 +29,10 @@
 #define GPIO_PIN_10 GpioAction::BUTTON_PRESS_S2     // S2     | Start  | Plus    | Start    | 10     | Start  |
 #define GPIO_PIN_08 GpioAction::BUTTON_PRESS_A1     // A1     | Guide  | Home    | PS       | 13     | ~      |
 #define GPIO_PIN_28 GpioAction::BUTTON_PRESS_A2     // A2     | ~      | Capture | ~        | 14     | ~      |
-#define GPIO_PIN_06 GpioAction::BUTTON_PRESS_L3     // L3     | LS     | LS      | L3       | 11     | LS     |
+#define GPIO_PIN_01 GpioAction::BUTTON_PRESS_L3     // L3     | LS     | LS      | L3       | 11     | LS     |
 #define GPIO_PIN_15 GpioAction::BUTTON_PRESS_R3     // R3     | RS     | RS      | R3       | 12     | RS     |
 #define GPIO_PIN_00 GpioAction::BUTTON_PRESS_E1     // Extra 1
-#define GPIO_PIN_01 GpioAction::BUTTON_PRESS_E2     // Extra 2
+#define GPIO_PIN_06 GpioAction::BUTTON_PRESS_E2     // Extra 2
 #define GPIO_PIN_22 GpioAction::BUTTON_PRESS_E3     // Extra 3
 
 // Keyboard Mapping Configuration
@@ -89,12 +89,12 @@
     {GP_ELEMENT_PIN_BUTTON, {50, 32, 4, 4, 1, 1, 4, GP_SHAPE_ELLIPSE}},\
     {GP_ELEMENT_PIN_BUTTON, {62, 17, 4, 4, 1, 1, 22, GP_SHAPE_ELLIPSE}},\
     {GP_ELEMENT_PIN_BUTTON, {55, 50, 5, 5, 1, 1, 5, GP_SHAPE_ELLIPSE}},\
-    {GP_ELEMENT_PIN_BUTTON, {47, 42, 4, 4, 1, 1, 6, GP_SHAPE_ELLIPSE}},\
+    {GP_ELEMENT_PIN_BUTTON, {47, 42, 4, 4, 1, 1, 1, GP_SHAPE_ELLIPSE}},\
     {GP_ELEMENT_PIN_BUTTON, {84, 15, 2, 2, 1, 1, 10, GP_SHAPE_ELLIPSE}},\
     {GP_ELEMENT_PIN_BUTTON, {91, 15, 2, 2, 1, 1, 7, GP_SHAPE_ELLIPSE}},\
     {GP_ELEMENT_PIN_BUTTON, {98, 15, 2, 2, 1, 1, 8, GP_SHAPE_ELLIPSE}},\
     {GP_ELEMENT_PIN_BUTTON, {105, 15, 2, 2, 1, 1, 28, GP_SHAPE_ELLIPSE}},\
-    {GP_ELEMENT_PIN_BUTTON, {22, 29, 4, 4, 1, 1, 1, GP_SHAPE_ELLIPSE}},\
+    {GP_ELEMENT_PIN_BUTTON, {22, 29, 4, 4, 1, 1, 6, GP_SHAPE_ELLIPSE}},\
 }
 
 #define DEFAULT_BOARD_LAYOUT_B {\
