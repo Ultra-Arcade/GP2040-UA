@@ -24,7 +24,7 @@ jobs:
     strategy:
       matrix:
         GP2040_BOARDCONFIG: 
-          [17XL]
+          [18XL]
 
     steps:
     - name: Setup cmake
