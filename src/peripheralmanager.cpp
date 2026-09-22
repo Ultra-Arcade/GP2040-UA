@@ -1,5 +1,6 @@
 #include "peripheralmanager.h"
 #include "storagemanager.h"
+#include "BoardConfig.h"
 
 void PeripheralManager::initUSB(){
     const PeripheralOptions& peripheralOptions = Storage::getInstance().getPeripheralOptions();
@@ -8,7 +9,11 @@ void PeripheralManager::initUSB(){
 
 void PeripheralManager::initI2C(){
     const PeripheralOptions& peripheralOptions = Storage::getInstance().getPeripheralOptions();
+#if defined(I2C0_USE_PIO) && I2C0_USE_PIO
+    if (peripheralOptions.blockI2C0.enabled) blockI2C0.setConfigPIO(peripheralOptions.blockI2C0.sda, peripheralOptions.blockI2C0.scl, peripheralOptions.blockI2C0.speed);
+#else
     if (peripheralOptions.blockI2C0.enabled) blockI2C0.setConfig(0, peripheralOptions.blockI2C0.sda, peripheralOptions.blockI2C0.scl, peripheralOptions.blockI2C0.speed);
+#endif
     if (peripheralOptions.blockI2C1.enabled) blockI2C1.setConfig(1, peripheralOptions.blockI2C1.sda, peripheralOptions.blockI2C1.scl, peripheralOptions.blockI2C1.speed); 
 }
 

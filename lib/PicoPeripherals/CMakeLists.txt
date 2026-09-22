@@ -1,9 +1,12 @@
-add_library(PicoPeripherals peripheral_i2c.cpp peripheral_spi.cpp peripheral_usb.cpp)
+add_library(PicoPeripherals peripheral_i2c.cpp peripheral_spi.cpp peripheral_usb.cpp pio_i2c.cpp)
+pico_generate_pio_header(PicoPeripherals ${CMAKE_CURRENT_SOURCE_DIR}/pio_i2c.pio)
 target_include_directories(PicoPeripherals INTERFACE .)
 target_link_libraries(PicoPeripherals 
 pico_stdlib
 hardware_gpio
 hardware_i2c
 hardware_spi
+hardware_pio
+hardware_clocks
 tinyusb_pico_pio_usb
 )

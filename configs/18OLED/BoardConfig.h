@@ -49,8 +49,8 @@
 #define GPIO_PIN_28 GpioAction::BUTTON_PRESS_R3       // R3
 
 // Pins reserved for peripherals/add-ons
-#define GPIO_PIN_20 GpioAction::ASSIGNED_TO_ADDON     // OLED SDA
-#define GPIO_PIN_21 GpioAction::ASSIGNED_TO_ADDON     // OLED SCL
+#define GPIO_PIN_20 GpioAction::ASSIGNED_TO_ADDON     // OLED SCL
+#define GPIO_PIN_21 GpioAction::ASSIGNED_TO_ADDON     // OLED SDA
 #define GPIO_PIN_26 GpioAction::ASSIGNED_TO_ADDON     // USB Host D-
 #define GPIO_PIN_27 GpioAction::ASSIGNED_TO_ADDON     // USB Host D+
 
@@ -97,13 +97,19 @@
 // -----------------------------------------------------------------------------
 // OLED / I2C
 //
-// GPIO20 = SDA, GPIO21 = SCL -> I2C0 on RP2040.
+// The PCB routes the OLED bus as GPIO21 = SDA, GPIO20 = SCL.  This is the
+// opposite of the RP2040 hardware I2C0 pin functions (GPIO20 = SDA,
+// GPIO21 = SCL), so the hardware I2C0 peripheral cannot be used.  A PIO-based
+// I2C backend is used instead (I2C0_USE_PIO), which can place SDA/SCL on
+// arbitrary GPIOs.
 // -----------------------------------------------------------------------------
 
 #define HAS_I2C_DISPLAY 1
 #define I2C0_ENABLED 1
-#define I2C0_PIN_SDA 20
-#define I2C0_PIN_SCL 21
+#define I2C0_PIN_SDA 21
+#define I2C0_PIN_SCL 20
+#define I2C0_SPEED 400000
+#define I2C0_USE_PIO 1
 
 // -----------------------------------------------------------------------------
 // USB Host / Passthrough

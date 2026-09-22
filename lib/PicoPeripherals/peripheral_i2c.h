@@ -5,6 +5,7 @@
 #include <hardware/gpio.h>
 #include <hardware/i2c.h>
 #include <hardware/platform_defs.h>
+#include "pio_i2c.h"
 
 //#define DEBUG_PERIPHERALI2C
 
@@ -40,6 +41,11 @@
 #define I2C1_SPEED 400000
 #endif
 
+enum class I2CBackend {
+    Hardware,
+    PIO
+};
+
 class PeripheralI2C {
 public:
     PeripheralI2C();
@@ -47,9 +53,10 @@ public:
 
     bool configured = false;
 
-    i2c_inst_t* getController() { return _I2C; }
+    i2c_inst_t* getController() { return _backend == I2CBackend::Hardware ? _I2C : nullptr; }
 
     void setConfig(uint8_t block, int8_t sda, int8_t scl, uint32_t speed);
+    bool setConfigPIO(int8_t sda, int8_t scl, uint32_t speed);
 
     int16_t read(uint8_t address, uint8_t *data, uint16_t len, bool isBlock=false);
     int16_t readRegister(uint8_t address, uint8_t reg, uint8_t *data, uint16_t len);
@@ -66,16 +73,27 @@ public:
 private:
     const uint32_t DEFAULT_SPEED = 400000;
 
+    I2CBackend _backend = I2CBackend::Hardware;
+
     uint8_t _SDA;
     uint8_t _SCL;
     i2c_inst_t *_I2C;
     int32_t _Speed;
+
+    // PIO backend state
+    PIO _pio = nullptr;
+    uint _pioSm = 0;
+    uint _pioOffset = 0;
+    bool _pioProgramLoaded = false;
+    bool _pioBusHeld = false;
 
     i2c_inst_t* _hardwareBlocks[NUM_I2CS] = {i2c0,i2c1};
 
     int8_t _exclusiveAddress = -1;
 
     void setup();
+    void setupPIO();
+    void deinitPIO();
 };
 
 #endif
